@@ -65,8 +65,6 @@ do
 		if [[ "${STRIPPEDVARINT}" == "${STRIPPEDVAR}" ]]; then
 			#DO STUFF USING ALL THREE VARIABLES HERE
 			mergedata "${RPATH[$i]}" "${REPO[$i]}" ${EXTREPO[$j]}
-		else
-			echo "WARNING: External repo not found! Skipping: ${RPATH[$i]} | REPO: ${REPO[$i]} | EXTREPO: ${EXTREPO[$j]}";
 		fi
 
 		j=$(( $j + 1 ));
