@@ -35,7 +35,8 @@ function mergedata() {
 	fi
 
 	git fetch ${REMOTENAME}
-	git merge ${REMOTENAME}/${BRANCHTOMERGEFROM}
+	git merge --squash ${REMOTENAME}/${BRANCHTOMERGEFROM}
+
 	cd "$BASE_LOCDIR" > /dev/null
 }
 
