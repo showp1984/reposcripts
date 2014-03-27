@@ -16,9 +16,9 @@ function mergedata() {
         echo "-------- Working on PATH: $1 | REPO: $2"
 	if [[ ! $ONLYONCE -eq 0 ]]; then
 		repo abandon merging_branch
+        repo start merging_branch --all
 		ONLYONCE=0;
 	fi
-	repo start merging_branch --all
 
         cd "${1}" > /dev/null
 	if [[ $( git remote | grep ${REMOTENAME}) == "${REMOTENAME}" ]]; then
@@ -52,5 +52,3 @@ do
 
 	i=$(( $i + 1 ));
 done
-
-
