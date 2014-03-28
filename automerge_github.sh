@@ -65,7 +65,27 @@ do
 
 		if [[ "${STRIPPEDVARINT}" == "${STRIPPEDVAR}" ]]; then
 			#DO STUFF USING ALL THREE VARIABLES HERE
-			mergedata "${RPATH[$i]}" "${REPO[$i]}" ${EXTREPO[$j]}
+			echo "-------- Repo ${REPO[$i]} can be merged with external!";
+			VALID=0;
+			while [[ $VALID -eq 0 ]]
+			do
+				echo "[Y|y] Yes, hell yes!";
+				echo "[N|n] No, shut up!";
+				echo "Proceed?";
+				read DECISION;
+				case "$DECISION" in
+					y|Y)
+					VALID=1;
+					mergedata "${RPATH[$i]}" "${REPO[$i]}" ${EXTREPO[$j]}
+					;;
+					n|N)
+					VALID=1;
+					echo "-------- Skipping Repo ${REPO[$i]} on user request...";
+					;;
+					*)
+					echo "-------- Error: Unknown input ($DECISION), try again.";
+				esac
+			done
 		fi
 
 		j=$(( $j + 1 ));
